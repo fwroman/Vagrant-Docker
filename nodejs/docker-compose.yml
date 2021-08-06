@@ -1,0 +1,13 @@
+version: "3.9"
+services: 
+  web-api:
+    build: .
+    container_name: fred-nodejs
+    # PARA CONFIGURAR LOS CONTENEDORES DENTRO DE LA MISMA RED:
+    network_mode: bridge
+    volumes:
+      - ./loopback4-back:/fred-loopback4
+      - /fred-loopback4/node_modules
+    ports:
+      - 3000:3000
+    restart: unless-stopped

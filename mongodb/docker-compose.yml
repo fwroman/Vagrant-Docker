@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo
+    container_name: fred-mongodb
+    # PARA CONFIGURAR LOS CONTENEDORES DENTRO DE LA MISMA RED:
+    network_mode: bridge
+    environment: 
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /home/vagrant/mongo-database:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
